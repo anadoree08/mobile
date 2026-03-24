@@ -35,6 +35,42 @@ Hoje a aula foi bem produtiva e prática. A gente começou criando uma conta no 
 
 ### Instalação do FlutterSDK
 - download do arquivo ZIP na página flutter.dev
+- inc## Conteúdo da Aula Anterior
+
+## Introdução ao Desenvolvimento Mobile
+
+### Tipo de Desenvolvimento
+
+- Nativo
+    - Android:
+        - SDK : Android SDK
+        - IDE : Android Studio
+        - Linguagens: Kotlin e Java
+        - Ambientes: Mac, Win, Linux
+
+    - Ios:
+        - SDK: Cocoa Touch
+        - IDE: Xcode
+        - Liguagens: Swift / Objectype-C
+        - Ambientes: Mac
+
+- Multiplataforma
+    - React Native:
+        - SDK: Node.JS
+        - IDE: VSCode, 
+        - Linguagens: JavaScript / TypeScript
+        - Ambientes: Mac, Win, Linux
+    
+    - Flutter
+        - SDK: Flutter SDK
+        - IDE: VSCode, Android Studio
+        - Linguagens: Dart
+        - Ambientes: Mac, Win, Linux
+
+## Preparação do Ambiente de Desenvolvimento
+
+### Instalação do FlutterSDK
+- download do arquivo ZIP na página flutter.dev
 - inclusão do flutter na pasta C:\src
 - inclusão do flutter\bin nas varáveis de ambiente
 - teste o flutter --version
@@ -48,8 +84,79 @@ Hoje a aula foi bem produtiva e prática. A gente começou criando uma conta no 
     - platforms
     - platform-tools
     - build-tools
-
 - adicionar ADB e o Emulator as Variáveis de Ambiente
-
 - Criação da Imagem do Emulador - via sdkmanager
 - Build do Emulador - via sdkmanager
+
+### Criação de Projetos e Códigos da Linha de Comando
+
+- criação de projetos
+    - flutter create nome_do_app
+        - flags(parâmetros):
+            - --empty : Cria um aplicativo "vazio"(hello World!)
+            - --platforms : permite a seleção de uma plataforma de desenvolvimento
+                - ex: --platforms=android (a criação do projeto será somente para a plataforma android)
+    - exemplo de criação de uma aplicativo android vazio
+        - flutter create nome_do_app --empty --platforms=android
+        - obs: nome do aplicativo: todas as letras minúsculas, separação de palavras com "_";
+    - flutter doctor
+        - permite correção de pequenos problemas no flutter e identificação dos parâmetros funcionais em relação as plataforma de desenvolvimento
+        - sempre rodar o flutter doctor no começo do desenvolvimento
+    - flutter clean
+        - limpa cache do build(apaga o apk anterior)
+    - flutter run -v 
+        - build do app (apk)
+
+- gerenciamento de dependências do PubSpec()
+    - instalação
+        - flutter pub add nome_dependencia
+    - baixar e instalar dependências projetadas 
+        - flutter pub get
+    - outros comando do flutter pub(dependências)
+        - flutter pub outdated (verifica se as dependências estão desatualizadas)
+        - flutter pub upgrade (atualiza as dependências do flutter pub)
+
+### Estrutura básica de um aplicativo em flutter 
+
+### Árvore de widgets
+```mermaid
+
+    flowchart TD
+        subgraph MaterialApp["MaterialApp"]
+        end
+        subgraph Janelas["Janelas"]
+            StateLess["StateLess"]
+            StateFull["StateFull"]
+        end
+        subgraph Scaffold["Scaffold"]
+            AppBar["Appbar"]
+            Body["Body"]
+            BNBar["BNBar"]
+            Drawer["Drawer"]
+            FAButton["FAButton"]
+            SnackBar["SnackBar"]
+        end
+        MaterialApp --> Janelas
+        Janelas --> Scaffold         
+
+```
+
+#### Tipos de janelas 
+- StateLess:
+    Janelas Imutáveis - Uma vez contruída ela não se altera
+    obs: pode ter movimento (GIF, Movies, Carrossel, Cards), mas não consigo alterar as imagens, os videos e os elementos de movimento depois de montados
+
+- StateFull:
+    Janelas que permitem mudança de estado (setState)
+    obs: Permite adicionar elementos a janela, como novas imagens, novos textos entre outros.
+
+- Comparativo Stateless vs Stateful 
+
+|Caracteristica|Stateless|Stateful|
+|-|-|-|
+|Mutabilidade| Não | Sim |
+|Uso Ideal | Layouts Fixo e Exibição de dados Estáticos | Interações do Usuários, Animações e Dados Dinâmicos|
+|Armazenamento de Estado| Não | Sim |
+| Método Principal | build() | build()+setState() |
+
+
